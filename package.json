@@ -1,0 +1,59 @@
+{
+  "name": "@hullt/client",
+  "version": "1.0.0-alpha.1",
+  "description": "Use Client-Side Hullt-API to authorize Users and manage Data",
+  "keywords": [
+    "hullt",
+    "api",
+    "authorize",
+    "storage",
+    "typescript",
+    "jest",
+    "node",
+    "nodejs"
+  ],
+  "author": "Tamino Martinius <dev@zaku.eu>",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "jsnext:main": "./dist/index.mjs",
+  "typings": "./dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hullt-com/node--client.git"
+  },
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "scripts": {
+    "coverage": "rm -rf coverage* && jest --coverage --maxWorkers=1",
+    "test": "jest --maxWorkers=1",
+    "watch": "tsc -w",
+    "ci": "npm run coverage && codecov",
+    "compile": "rm -rf dist/* && tsc && tsc-mjs --declaration false --target esnext --module esnext --mjs",
+    "preversion": "npm run compile && git add ."
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/node": "^13.1.2",
+    "codecov": "^3.6.1",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "ts-mjs": "^3.1.0",
+    "typescript": "^3.7.4"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testRegex": "\\.(test|spec)\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/__benchmark__/**",
+      "!src/__tests__/**",
+      "!src/__mocks__/**"
+    ]
+  }
+}
